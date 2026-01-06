@@ -1,10 +1,9 @@
 <x-layout>
-  <div class="container">
+  <div class="container mx-auto">
     <div class="flex justify-center items-center h-screen w-full">
-      <div class="w-full max-w-md">
-
+      <div class="w-full max-w-md text-white p-4 rounded-lg">
         <h1 class="text-center text-2xl font-bold mb-6">This is an API only endpoint</h1>
-        <div class="p-4 rounded-lg bg-gray-800 w-lg">
+        <div class="p-4 rounded-lg bg-gray-800">
           <p class="mb-4 text-gray-300">
             This endpoint is intended for testing purposes only. No login form for simplicity. Please use the <a
               href=" {{ route('generate-token') }}" class="text-blue-500">generate-token</a> endpoint to
