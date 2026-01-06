@@ -15,7 +15,7 @@ class TestDbTransaction extends Command
      * @var string
      */
     protected $signature = 'app:test-db-transaction
-                            {--failin=?: fail the transaction after N seconds}';
+                            {--failin= : fail the transaction after N seconds}';
 
     /**
      * The console command description.
@@ -50,7 +50,10 @@ class TestDbTransaction extends Command
             DB::Transaction(function () use ($lines, $start, $failin) {
                 foreach ($lines as $line) {
 
-                    sleep(1);
+                    if ($this->option('failin')) {
+                        sleep(1);
+                    }
+
                     if ($failin && (microtime(true) - $start > $failin)) {
                         throw new \Exception('Transaction will be rollback.');
                     }
