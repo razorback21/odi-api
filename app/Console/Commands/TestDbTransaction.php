@@ -75,7 +75,7 @@ class TestDbTransaction extends Command
                 $this->info('Import completed.');
             });
         } catch (\Exception $e) {
-            Log::error('An error occurred', ['errorMessage' => $e]);
+            Log::error('An error occurred', ['errorMessage' => $e->getMessage()]);
             $this->error('Import failed: '.$e->getMessage());
         }
 
