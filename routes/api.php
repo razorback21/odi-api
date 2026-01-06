@@ -16,6 +16,10 @@ Route::get('/generate-token', function () {
         'password' => bcrypt('password'),
     ]);
 
+    // This just a token generator for testing purpose. Will delete all existing tokens on every request.
+    // In production, you should use the login route and login to generate the token.
+    $user->tokens()->delete();
+
     $token = $user->createToken('super-token')->plainTextToken;
 
     return $token;
