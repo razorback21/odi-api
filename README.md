@@ -80,7 +80,7 @@ GET /api/contacts
 
 1. Find file named readme_p3.txt in the root folder of the project.
 
-## Part 4 - Database Transaction
+## Part 3.1 - Database Transaction
 
 1. Run `php artisan app:test-db-transaction` // for success case
 2. Run `php artisan app:test-db-transaction --failin=2` // for failed case
