@@ -24,13 +24,15 @@ class TestDbTransaction extends Command
      */
     protected $description = 'Test database transaction';
 
+    protected $file = 'students_import_records.csv';
+
     /**
      * Execute the console command.
      */
     public function handle()
     {
         $failin = $this->option('failin');
-        $csv = file_get_contents(base_path().'/students_import_records.csv');
+        $csv = file_get_contents(base_path()."/{$this->file}");
         $this->importCsv($csv, $failin);
     }
 
@@ -43,7 +45,7 @@ class TestDbTransaction extends Command
 
         $start = microtime(true);
 
-        $this->info('importing students_import_records.csv...');
+        $this->info("importing {$this->file}...");
         $lines = explode("\n", $csv);
 
         try {
