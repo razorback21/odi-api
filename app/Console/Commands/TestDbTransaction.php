@@ -50,12 +50,12 @@ class TestDbTransaction extends Command
             DB::Transaction(function () use ($lines, $start, $failin) {
                 foreach ($lines as $line) {
 
-                    if ($this->option('failin')) {
+                    if ($failin) {
                         sleep(1);
-                    }
 
-                    if ($failin && (microtime(true) - $start > $failin)) {
-                        throw new \Exception('Transaction will be rollback.');
+                        if (microtime(true) - $start > $failin) {
+                            throw new \Exception('Transaction will be rollback.');
+                        }
                     }
 
                     $data = str_getcsv($line);
