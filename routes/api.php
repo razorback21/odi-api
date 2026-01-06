@@ -5,7 +5,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', function (Request $request) {
-    return htmlspecialchars("Goto '/api/generate-token' to generate Sanctum access token. Then use it in the Authorization header as 'Bearer <token>'.");
+    return view('api.login');
+    // return htmlspecialchars("Goto '/api/generate-token' to generate Sanctum access token. Then use it in the Authorization header as 'Bearer <token>'.");
 })->name('login');
 
 Route::get('/generate-token', function () {
@@ -23,6 +24,6 @@ Route::get('/generate-token', function () {
     $token = $user->createToken('super-token')->plainTextToken;
 
     return $token;
-});
+})->name('generate-token');
 
 Route::apiResource('contacts', ContactController::class)->middleware('auth:sanctum');
