@@ -54,10 +54,7 @@ class TestDbTransaction extends Command
                     if ($failin && (microtime(true) - $start > $failin)) {
                         throw new \Exception('Transaction will be rollback.');
                     }
-                    /**
-                     * student_id,student_code,first_name,last_name,date_of_birth,school_code,school_name
-                     * 2000,BS-001,Melissa,Cruz,2008-09-28,SCH-010,"Matnog National High School"
-                     */
+
                     $data = str_getcsv($line);
                     Student::create([
                         'student_id' => $data[0],
@@ -73,7 +70,7 @@ class TestDbTransaction extends Command
                 $this->info('Import completed.');
             });
         } catch (\Exception $e) {
-            Log::error('An error occurred', ['errorMessage' => $e]); // you can also pass the whole exception object ]);
+            Log::error('An error occurred', ['errorMessage' => $e]);
             $this->error('Import failed: '.$e->getMessage());
         }
 
