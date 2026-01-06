@@ -43,7 +43,7 @@ class TestDbTransaction extends Command
 
         $start = microtime(true);
 
-        $this->info('Importing students.csv...');
+        $this->info('students_import_records.csv...');
         $lines = explode("\n", $csv);
 
         try {
