@@ -82,5 +82,5 @@ GET /api/contacts
 
 ## Part 4 - Database Transaction
 
-1. Run `php artisan db:seed --class=TestDbTransaction` // for success case
-2. Run `php artisan db:seed --class=TestDbTransaction --failedin=2` // for failed case
+1. Run `php artisan app:test-db-transaction` // for success case
+2. Run `php artisan app:test-db-transaction --failin=2` // for failed case
